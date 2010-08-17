@@ -1,0 +1,158 @@
+#board {
+	float:left;
+	background:black;
+	width:737px;
+	height:417px;
+	margin:5px;
+}
+
+.hidden{
+	display:none;
+}
+
+.nametag{
+	text-align:center;
+	width:437px;
+	height:30px;
+	margin:5px 155px;
+	clear:both;
+}
+
+#name1{
+	background:black;
+	color:white;
+}
+
+#name2{
+	background:white;
+	color:black;
+	border:1px solid black;
+}
+div#header
+{
+	margin:1px 5px;
+	width:737px;
+	background:black;
+	text-align:center;
+	color:white;
+}
+
+div#undo
+{
+	float:left;
+	width:50px;
+	height:50px;
+	background:url(images/undo.png);
+}
+
+div#undo:hover
+{
+	border:1px solid black;
+}
+
+#board div{
+	text-align:center;
+	margin: 1px;
+	width:90px;
+	float:left;
+	height:50px;
+}
+
+#board div.black{
+	background-color:silver;
+}
+#board div.white{
+	background-color:white;
+}
+
+div.piece span{
+	background-color:transparent;
+	display:inline-block;
+	width:50px;
+	height:46px;
+}
+
+div.pieces span{
+	display:block;
+	text-align:right;
+	background-color:red;
+	margin:auto;
+	width:50px;
+	height:46px;
+}
+
+div#player
+{
+	margin:5px;
+	text-align:center;
+	width: 737px;
+	color:white;
+	background:black;
+}
+
+div.pieces {
+	text-align:center;
+	float:left;
+	width:90px;
+	height:417px;
+	margin:5px;
+}
+
+div#black {
+	background-color:white;
+	border:1px solid black;
+}
+
+div#white{
+	color:white;
+	background-color:black;
+	border:1px solid black;
+}
+
+div#selected
+{
+	margin:5px;
+	text-align:center;
+	width: 736px;
+	color:black;
+	background:white;
+}
+
+div#error
+{
+	margin:5px;
+	text-align:center;
+	width:736px;
+	color:white;
+	background:red;
+}
+
+div#quit
+{
+	background:url(images/quit.png);
+	height:50px;
+	width:50px;
+	margin-left:687px;
+}
+
+div#quit:hover
+{
+	border:1px solid black;
+}
+
+div#form
+{
+	text-align:center;
+	width:300px;
+	margin:0px 219px;
+}
+
+input#p1
+{
+	background-color:black;
+	color:white;
+}
+html, body {
+	margin:0px;
+	padding:0px;
+}

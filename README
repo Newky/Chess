@@ -1,0 +1,20 @@
+CHESS JAVASCRIPT
+----------------
+
+Currently Hosted on http://netsoc.tcd.ie/~richdel/Chess/
+
+---------------
+
+Currently implemented:
+
+All Pieces Have Logic built in, 
+
+The Game is playable
+
+Part of the AJAX server implemented
+
+the Server is implemented as far as the connection is made between the players but no move is possible 
+
+---------------
+
+

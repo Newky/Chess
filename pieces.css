@@ -1,0 +1,52 @@
+span.black.pawn
+{
+	background: url(images/pieces/black_pawn.png);
+}
+
+span.white.pawn
+{
+	background: url(images/pieces/white_pawn.png);
+}
+
+span.black.rook
+{
+	background: url(images/pieces/black_rook.png);
+}
+span.white.rook
+{
+	background: url(images/pieces/white_rook.png);
+}
+
+span.black.knight
+{
+	background: url(images/pieces/black_knight.png);
+}
+span.white.knight
+{
+	background: url(images/pieces/white_knight.png);
+}
+
+span.black.bishop
+{
+	background: url(images/pieces/black_bishop.png);
+}
+span.white.bishop
+{
+	background: url(images/pieces/white_bishop.png);
+}
+span.black.queen
+{
+	background: url(images/pieces/black_queen.png);
+}
+span.white.queen
+{
+	background: url(images/pieces/white_queen.png);
+}
+span.black.king
+{
+	background: url(images/pieces/black_king.png);
+}
+span.white.king
+{
+	background: url(images/pieces/white_king.png);
+}

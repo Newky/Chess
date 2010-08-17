@@ -1,0 +1,306 @@
+
+<html>
+	<head>
+	<title> Chess </title>
+	<link rel=StyleSheet href="decorate.css" type="text/css"/>
+	<link rel=StyleSheet href="pieces.css" type="text/css"/>
+	<script type="text/javascript" src="main.js">
+	</script>
+	<script type="text/javascript" src="moves.js">
+	</script>
+	<script type="text/javascript" src="ajaxStuff.js">
+	</script>
+	</head>
+	<body onload="javascript:init();" onbeforeunload="de_activate();">
+		<div id="header">
+			<h1> YACG </h1>
+		</div>
+		<div id="form">
+			<form id="playerDialog">
+				Player Name:
+				<br/>
+				<input type="text" name="p1" id="p1" value=""/> <br />
+				<input type="submit" onclick="ajaxFunction();return false;" />
+			</form>
+		</div>
+		<div id="name1" class="nametag hidden"> </div>
+		<div id="board" class="hidden">
+
+			<div class="black piece" id="a0">
+				<span id="imga0" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="b0">
+				<span id="imgb0" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="c0">
+				<span id="imgc0" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="d0">
+				<span id="imgd0" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="e0">
+				<span id="imge0" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="f0">
+				<span id="imgf0" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="g0">
+				<span id="imgg0" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="h0">
+				<span id="imgh0" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	<br/>
+			<div class="white piece" id="a1">
+				<span id="imga1" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="b1">
+				<span id="imgb1" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="c1">
+				<span id="imgc1" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="d1">
+				<span id="imgd1" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="e1">
+				<span id="imge1" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="f1">
+				<span id="imgf1" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="g1">
+				<span id="imgg1" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="h1">
+				<span id="imgh1" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	<br/>
+			<div class="black piece" id="a2">
+				<span id="imga2" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="b2">
+				<span id="imgb2" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="c2">
+				<span id="imgc2" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="d2">
+				<span id="imgd2" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="e2">
+				<span id="imge2" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="f2">
+				<span id="imgf2" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="g2">
+				<span id="imgg2" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="h2">
+				<span id="imgh2" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	<br/>
+			<div class="white piece" id="a3">
+				<span id="imga3" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="b3">
+				<span id="imgb3" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="c3">
+				<span id="imgc3" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="d3">
+				<span id="imgd3" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="e3">
+				<span id="imge3" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="f3">
+				<span id="imgf3" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="g3">
+				<span id="imgg3" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="h3">
+				<span id="imgh3" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	<br/>
+			<div class="black piece" id="a4">
+				<span id="imga4" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="b4">
+				<span id="imgb4" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="c4">
+				<span id="imgc4" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="d4">
+				<span id="imgd4" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="e4">
+				<span id="imge4" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="f4">
+				<span id="imgf4" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="g4">
+				<span id="imgg4" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="h4">
+				<span id="imgh4" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	<br/>
+			<div class="white piece" id="a5">
+				<span id="imga5" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="b5">
+				<span id="imgb5" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="c5">
+				<span id="imgc5" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="d5">
+				<span id="imgd5" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="e5">
+				<span id="imge5" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="f5">
+				<span id="imgf5" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="g5">
+				<span id="imgg5" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="h5">
+				<span id="imgh5" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	<br/>
+			<div class="black piece" id="a6">
+				<span id="imga6" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="b6">
+				<span id="imgb6" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="c6">
+				<span id="imgc6" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="d6">
+				<span id="imgd6" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="e6">
+				<span id="imge6" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="f6">
+				<span id="imgf6" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="g6">
+				<span id="imgg6" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="h6">
+				<span id="imgh6" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	<br/>
+			<div class="white piece" id="a7">
+				<span id="imga7" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="b7">
+				<span id="imgb7" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="c7">
+				<span id="imgc7" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="d7">
+				<span id="imgd7" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="e7">
+				<span id="imge7" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="f7">
+				<span id="imgf7" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="white piece" id="g7">
+				<span id="imgg7" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	
+			<div class="black piece" id="h7">
+				<span id="imgh7" name = "" class="" onclick="decide(this);">&nbsp;</span>
+			</div>
+	<br/>
+		</div>
+		<div id="black" class="pieces hidden">
+		Pieces
+		</div>
+		<div id="white" class="pieces hidden">
+		Pieces
+		</div>
+		<div id="name2" class="nametag hidden"> </div> 
+		<div id="selected" class="hidden">
+			Selected Piece
+		</div>
+		<div id="player" class="hidden">
+			White's Turn
+		</div>
+		<div id="error">
+		</div>
+		<div id="undo" onclick="undo()">
+		</div>
+		<div id="quit" onclick="de_activate();return false;">
+		</div>
+	</body>
+</html>
