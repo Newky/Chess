@@ -210,7 +210,12 @@ function allowed_movements_pawn(obj, next_obj)
 		if(!attempt)
 			obj.className = obj.className.substring(obj.className.indexOf("start")+5, obj.className.length);
 		if(next_obj.parentNode.id == gridletter+""+desired_grid)
-			return 1;
+		{
+			if(!objfound(next_obj))
+				return 1;
+			else
+				return 0;
+		}
 	}
 	desired_grid = parseInt(gridnum) + (1*direction);
 	if(next_obj.parentNode.id == gridletter+""+desired_grid)
