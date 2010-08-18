@@ -4,6 +4,7 @@ var attempt = 0;
 var moves = new Array();
 var pieces_taken = new Array();
 lets = ["a", "b", "c", "d", "e", "f", "g", "h"];
+var checkmatecheck = 0;
 var authority = 0;
 var player = 0;
 var clicked_piece=0;
@@ -87,12 +88,14 @@ function here(obj)
 				else
 				{
 					if(checkCheck(player))
+					{
 						do_error("CHECK!!!");
+					}
 					if(castling == 1)
 					{
 						move_rook();
 					}
-					if(player == play_color)
+					if(player == play_color && checkmatecheck == 0)
 					{
 						setTimeout("checkMove()", 17000);
 						send_to_database(obj.id);
@@ -103,6 +106,14 @@ function here(obj)
 						taken(taken_classname);
 					changePlayerStatus();
 					clearSelection();
+					if(document.getElementById("error").innerHTML == "CHECK!!!")
+					{
+						if(check_mate(!player, obj))
+							do_error("checkmate");
+						else
+							do_error("CHECK!!!");
+						checkmatecheck = 0;
+					}
 				}
 			}
 			else
@@ -316,14 +327,21 @@ function modify_piece_board(classname)
 function check_taken(num)
 {
 	var item = pieces_taken.pop();
-	var parts = item.split(":");
-	if(parseInt(parts[0])== num)
+	if(typeof(item) == "undefined")
 	{
-		return parts[1];
+		var parts = item.split(":");
+		if(parseInt(parts[0])== num)
+		{
+			return parts[1];
+		}
+		else
+		{
+			pieces_taken.push(item);
+			return "";
+		}
 	}
 	else
 	{
-		pieces_taken.push(item);
 		return "";
 	}
 }

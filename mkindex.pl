@@ -13,6 +13,8 @@ print qq{
 	</script>
 	<script type="text/javascript" src="ajaxStuff.js">
 	</script>
+	<script type="text/javascript" src="possibles.js">
+	</script>
 	</head>
 	<body onload="javascript:init();" onbeforeunload="de_activate();">
 		<div id="header">
