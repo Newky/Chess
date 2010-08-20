@@ -110,10 +110,19 @@ function here(obj)
 					clearSelection();
 					if(document.getElementById("error").innerHTML == "CHECK!!!")
 					{
+						if(authority == 0)
+						{
+							authority = 1;
+						}
 						if(check_mate(!player, obj))
+						{
+							alert("player "+player+" is in checkmate");
 							do_error("checkmate");
+						}
 						else
+						{
 							do_error("CHECK!!!");
+						}
 						checkmatecheck = 0;
 					}
 				}
@@ -329,7 +338,7 @@ function modify_piece_board(classname)
 function check_taken(num)
 {
 	var item = pieces_taken.pop();
-	if(typeof(item) == "undefined")
+	if(typeof(item) != "undefined")
 	{
 		var parts = item.split(":");
 		if(parseInt(parts[0])== num)
