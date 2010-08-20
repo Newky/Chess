@@ -22,8 +22,8 @@ print qq{
 		</div>
 		<div id="form">
 			<form id="playerDialog">
-				Player Name:<input type="text" name="p1" id="p1" value=""/> <br />
-				<input type="submit" onclick="ajaxFunction();return false;" />
+				Player Name:<input type="text" name="p1" id="p1" value=""/>
+				<span id="submit" onclick="ajaxFunction();return false;">&nbsp</span>
 			</form>
 		</div>
 		<div id="name1" class="nametag hidden"> </div>

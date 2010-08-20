@@ -147,6 +147,14 @@ div#form
 	margin:0px 219px;
 }
 
+span#submit
+{
+	display:inline-block;
+	background:url(images/go.png);
+	height:20px;
+	width:20px;
+}
+
 input#p1
 {
 	background-color:black;
