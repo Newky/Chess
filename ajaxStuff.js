@@ -73,7 +73,7 @@ function checkOpponent()
 					opponent = response;
 					document.getElementById("name2").innerHTML = opponent;
 					do_error("");
-					setTimeout("checkMove()", 15000);
+					setTimeout("checkMove()", 1000);
 				}
 				else
 				{
@@ -112,13 +112,13 @@ function checkMove()
 					}
 					else
 					{
-						setTimeout("checkMove()", 15000);
+						setTimeout("checkMove()", 10000);
 						do_error("");
 					}
 				}
 				else
 				{
-					setTimeout("checkMove()", 15000);
+					setTimeout("checkMove()", 10000);
 					do_error("");
 				}
 			}

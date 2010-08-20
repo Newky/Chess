@@ -76,6 +76,7 @@ function here(obj)
 			if(other_piece)
 				taken_classname = obj.className;
 			saved_node = clicked_piece.cloneNode(false);
+			saved_node2 = obj.cloneNode(false);
 			if(allowed_movements(clicked_piece, obj))
 			{
 				obj.className = clicked_piece.className;
@@ -84,6 +85,7 @@ function here(obj)
 				{
 					do_error("Moving into Check");
 					reset_piece(saved_node, obj);
+					obj.className = saved_node2.className;
 				}
 				else
 				{
