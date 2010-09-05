@@ -40,10 +40,8 @@ function place(piece, start, end)
 	{
 		obj = document.getElementById("img"+lets[i]+"0");
 		obj.className = "black "+piece;
-		/*obj.style.background = "url(images/pieces/black_"+piece+".png)"*/
 		obj = document.getElementById("img"+lets[i]+"7");
 		obj.className = "white "+piece;
-		/*obj.style.background = "url(images/pieces/white_"+piece+".png)"*/
 	}
 }
 
@@ -81,6 +79,7 @@ function here(obj)
 			{
 				obj.className = clicked_piece.className;
 				clicked_piece.className = "";
+				checkPawn(player, obj);
 				if(checkCheck(!player))
 				{
 					do_error("Moving into Check");
@@ -357,3 +356,41 @@ function check_taken(num)
 	}
 }
 
+
+function checkPawn(player, moved_to)
+{
+	if(piece_determine(moved_to) == "pawn")
+	{
+		var inspect_line;
+		if(player == 0)
+		{
+			inspect_line = 0;
+			/*for(var i=0;i<8;i++)*/
+			/*{*/
+			/*var letter = lets[i];*/
+			/*var square = document.getElementById(letter+""+inspect_line);*/
+			/*if(square.childNodes[0].className == "white pawn")*/
+			/*{*/
+			/*square.childNodes[0].className == "white queen";*/
+			/*}*/
+			/*}*/
+		}
+		else
+		{
+			inspect_line = 7;
+			/*for(var i=0;i<8;i++)*/
+			/*{*/
+			/*var letter = lets[i];*/
+			/*var square = document.getElementById(letter+""+inspect_line);*/
+			/*if(square.childNodes[0].className == "black pawn")*/
+			/*{*/
+			/*square.childNodes[0].className == "black queen";*/
+			/*}*/
+			/*}*/
+		}
+		if(moved_to.parentNode.id.indexOf(""+inspect_line) != -1)
+		{
+			moved_to.className = moved_to.className.replace("pawn", "queen");
+		}
+	}
+}
