@@ -96,30 +96,17 @@ function checkMove()
 			if(ajaxRequest.status == 200)
 			{
 				var response =ajaxRequest.responseText;
-				if(response != "none")
+				//Get the other persons move and execute it
+				if(last_move != response)
 				{
 					do_error("");
-					//Get the other persons move and execute it
-					if(last_move != response)
-					{
-						last_move = response;
-						var parts = response.split("-");
-						var obj1 = document.getElementById(parts[0]);
-						var obj2 = document.getElementById(parts[1]);
-						authority=1;
-						decide(obj1);
-						decide(obj2);
-					}
-					else
-					{
-						setTimeout("checkMove()", 10000);
-						do_error("");
-					}
-				}
-				else
-				{
-					setTimeout("checkMove()", 10000);
-					do_error("");
+					last_move = response;
+					var parts = response.split("-");
+					var obj1 = document.getElementById(parts[0]);
+					var obj2 = document.getElementById(parts[1]);
+					authority=1;
+					decide(obj1);
+					decide(obj2);
 				}
 			}
 		}
@@ -132,6 +119,12 @@ function send_to_database(secid)
 {
 	var ajaxRequest = getHandle();
 	var comm_str = clicked_piece.id + "-"+secid;
+	ajaxRequest.onreadystatechange = function(){
+		if(ajaxRequest.readyState == 4)
+			if(ajaxRequest.status == 200)
+				if(ajaxRequest.responseText == "ACK")
+					checkMove();
+	}
 	ajaxRequest.open("GET","move.php?move="+escape(comm_str)+"&name="+escape(user),true);
 	ajaxRequest.send(null);
 }
@@ -139,7 +132,7 @@ function send_to_database(secid)
 function de_activate()
 {
 	var ajaxRequest = getHandle();
-	ajaxRequest.open("GET","quit.php?name1="+escape(user),true);
+	ajaxRequest.open("GET","quit.php?name="+escape(user),true);
 	ajaxRequest.send(null);
 	window.location = "thanks.html";
 }
