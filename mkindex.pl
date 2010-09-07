@@ -26,6 +26,10 @@ print qq{
 				<span id="submit" onclick="ajaxFunction();return false;">&nbsp</span>
 			</form>
 		</div>
+		<div id="opp" class="hidden">
+			<select id="opponents" ondblclick="select_opponent();" size="5">
+			</select>
+		</div>
 		<div id="name1" class="nametag hidden"> </div>
 		<div id="board" class="hidden">
 };

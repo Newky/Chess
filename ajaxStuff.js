@@ -1,4 +1,5 @@
 var play_color;
+var time_out_handle;
 function getHandle()
 {
 	var ajaxRequest;
@@ -20,70 +21,102 @@ function getHandle()
 	}
 	return ajaxRequest;
 }
-function ajaxFunction(){
+
+function activate_player(check)
+{
+	user = document.getElementById("p1").value;
 	var ajaxRequest = getHandle();
 	ajaxRequest.onreadystatechange = function(){
 		if(ajaxRequest.readyState == 4)
 		{
 			if(ajaxRequest.status == 200)
 			{
-				clear_hidden();
-				//Response is complet
-				opponent= ajaxRequest.responseText;
-				if(opponent != "")
+				op_list = ajaxRequest.responseText;
+				if(op_list.indexOf("sorted:") != -1)
 				{
-					play_color= 0;
-					authority=1;
-					document.getElementById("name1").innerHTML = opponent;
-					document.getElementById("name2").innerHTML = user;
+					op_list = op_list.replace("sorted:", "");
+					fill_names(op_list, 1);
+				}
+				else if(op_list != "")
+				{
+					var ops = op_list.split("-");
+					var sel_obj = document.getElementById("opponents");
+					if(sel_obj.options.length >0)
+					{
+						sel_obj.innerHTML = "";
+					}
+					for(var i=0;i<ops.length;i++)
+					{
+						if(ops[i] != "")
+						{
+							var option = document.createElement('option');
+							option.text = ops[i];
+							option.value = ops[i];
+							try{
+								sel_obj.add(option, null);
+							}catch(e){
+								sel_obj.add(option);
+							}
+						}
+					}
+					sel_obj.size = ""+sel_obj.length+1;
+					sel_obj.parentNode.className = "";
+					do_error("");
+					time_out_handle = setTimeout("activate_player(1)", 10000);
 				}
 				else
 				{
-					play_color =1;
-					document.getElementById("name1").innerHTML = user;
-					document.getElementById("name2").innerHTML = "pending";
-					setTimeout('checkOpponent();', 15000);
+					do_error("No Opponents At This Time");
+					time_out_handle = setTimeout("activate_player(1)", 10000);
 				}
-
-			}
-			else
-			{
-				alert(""+ajaxRequest.status);
 			}
 		}
 	}
-	user = document.getElementById("p1").value;
-	if(user == "" ) return;
-	ajaxRequest.open("GET","active.php?name1="+escape(user),true);
+	ajaxRequest.open("GET","active_new.php?name="+escape(user)+"&mode="+escape(check),true);
 	ajaxRequest.send(null);
 }
 
-function checkOpponent()
+function select_opponent()
 {
-	do_error("Checking for opponent");
+	clearTimeout(time_out_handle);
+	var sel_obj = document.getElementById("opponents");
+	var op_name = sel_obj.options[sel_obj.selectedIndex].value;
 	var ajaxRequest = getHandle();
 	ajaxRequest.onreadystatechange = function(){
 		if(ajaxRequest.readyState == 4)
 		{
 			if(ajaxRequest.status == 200)
 			{
-				var response =ajaxRequest.responseText;
-				if(response != "")
-				{
-					opponent = response;
-					document.getElementById("name2").innerHTML = opponent;
-					do_error("");
-					setTimeout("checkMove()", 1000);
-				}
-				else
-				{
-					setTimeout('checkOpponent();', 15000);
-				}
+				fill_names(op_name, 0);
 			}
 		}
 	}
-	ajaxRequest.open("GET","connected.php?name1="+escape(user),true);
+	ajaxRequest.open("GET","opponent.php?name="+escape(user)+"&op="+escape(op_name),true);
 	ajaxRequest.send(null);
+}
+
+function fill_names(opp, pos)
+{
+	var sel_obj = document.getElementById("opp");
+	document.body.removeChild(sel_obj);
+	opponent = opp;
+	if(!pos){
+		play_color =1;
+		document.getElementById("name1").innerHTML = user;
+		document.getElementById("name2").innerHTML = opp;
+		checkMove();
+	}
+	else{
+		play_color = 0;
+		authority = 1;
+		document.getElementById("name1").innerHTML = opp;
+		document.getElementById("name2").innerHTML = user;
+	}
+	clear_hidden();
+}
+
+function ajaxFunction(){
+	activate_player(0);
 }
 
 function checkMove()
@@ -111,7 +144,7 @@ function checkMove()
 			}
 		}
 	}
-	ajaxRequest.open("GET","move.php?move="+escape("none")+"&name="+escape(opponent),true);
+	ajaxRequest.open("GET","move.php?move="+escape("none")+"&name="+escape(opponent)+"&las_move="+escape(last_move),true);
 	ajaxRequest.send(null);
 }
 

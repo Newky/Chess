@@ -98,7 +98,6 @@ function here(obj)
 					}
 					if(player == play_color && checkmatecheck == 0)
 					{
-						setTimeout("checkMove()", 17000);
 						send_to_database(obj.id);
 						authority =0;
 					}

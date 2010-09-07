@@ -1,7 +1,8 @@
 <?php
 $move = $_GET["move"];
 $name = $_GET["name"];
-$user = "XXXXXX"
+$las_move = $_GET["las_move"];
+$user = "XXXXXX";
 $pass = "XXXXXX";
 $database = "XXXXXX";
 mysql_connect(localhost, $user, $pass);
@@ -13,11 +14,10 @@ if($move == "none")
 	{
 		/*In this case, Name will hold opponents name*/
 		$result = mysql_query("SELECT * FROM players WHERE name='$name'");
-		$row = mysql_fetch_array($result, MYSQL_ASSOC);
+		$row = mysql_fetch_array($result);
 		$move = $row['move'];
-		if($move != "")
+		if($move != $las_move && $move != "")
 		{
-			mysql_query("UPDATE players SET move='' WHERE name='$name'");
 			echo $move;
 			break;
 		}

@@ -140,7 +140,7 @@ div#quit:hover
 	border:1px solid black;
 }
 
-div#form
+div#form, div#opp
 {
 	text-align:center;
 	width:300px;
@@ -160,6 +160,14 @@ input#p1
 	background-color:black;
 	color:white;
 }
+
+select#opponents
+{
+	background-color:black;
+	color:white;
+	width:150px;
+}
+
 html, body {
 	margin:0px;
 	padding:0px;
